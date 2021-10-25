@@ -112,7 +112,7 @@ def main():
                     else:
                         break
                 if (response == "R"):
-                    print("NEW GAME\n")
+                    print("\nNEW GAME\n")
                     user_score = 0
                     CPU_score = 0
                 elif (response == "Q"):
