@@ -22,6 +22,7 @@ def game_mode(rounds):
 #CPU turn
 def CPU_play():
     x = random.randint(1, 3)
+    ##Randomly generate an option between rock, paper, or scissors
     if (x == 1):
         CPU = "ROCK"
     elif (x == 2):
@@ -33,7 +34,9 @@ def CPU_play():
 
 
 def play(choice, opponent, user_score, CPU_score):
+    ##check if user beat the CPU
     if (choice == "ROCK"):
+        print("CPU played", opponent, "\n")
         if (opponent == "ROCK"):
             print("Draw\n")
         elif (opponent == "PAPER"):
@@ -43,6 +46,7 @@ def play(choice, opponent, user_score, CPU_score):
             print("You win this round\n")
             user_score += 1
     elif (choice == "PAPER"):
+        print("CPU played", opponent, "\n")
         if (opponent == "ROCK"):
             print("You win this round\n")
             user_score += 1
@@ -52,6 +56,7 @@ def play(choice, opponent, user_score, CPU_score):
             print("CPU wins round!\n")
             CPU_score += 1
     elif (choice == "SCISSORS"):
+        print("CPU played", opponent, "\n")
         if (opponent == "ROCK"):
             print("CPU wins round!\n")
             CPU_score += 1
@@ -60,10 +65,12 @@ def play(choice, opponent, user_score, CPU_score):
             user_score += 1
         elif (opponent == "SCISSORS"):
             print("Draw\n")
+        
 
     return user_score, CPU_score
 
 def winner(user_score, CPU_score, win_in):
+    ## determine the winner depending on the number of rounds
     if (user_score == win_in):
         print("CONGRATULATIONS! You win")
         return True
