@@ -72,10 +72,12 @@ def play(choice, opponent, user_score, CPU_score):
 def winner(user_score, CPU_score, win_in):
     ## determine the winner depending on the number of rounds
     if (user_score == win_in):
-        print("CONGRATULATIONS! You win")
+        ##Show score
+        print("User:", user_score, "\nCPU:", CPU_score, "\nCONGRATULATIONS! You win\n")
         return True
     elif (CPU_score == win_in):
-        print("GAME OVER\nBetter luck next time. Try again?\n")
+        ##Show score
+        print("User:", user_score, "\nCPU:", CPU_score, "\nGAME OVER\nBetter luck next time. Try again?\n")
         return True
     else:
         return False
@@ -83,6 +85,7 @@ def winner(user_score, CPU_score, win_in):
 def main():
     print("WELCOME TO ROCK PAPER SCISSORS.\n\nEnter Q at anytime to quit and R to restart\n")
     while True:
+        ##Error handling user input to collect appropriate input
         try:
             round_count = int(input("How many rounds do you wish to play.\nEnter 3 or 5 for No.of.rounds: "))
             to_win = game_mode(round_count)
@@ -95,18 +98,23 @@ def main():
     while True:
         response = input("Rock, Paper, Scissors, shoot!: ")
         response = response.upper()
+        ##Enable user to quit the game
         if (response == "Q"):
             print("Bye!\n")
             break
+        ##Enable user to start a new game
         elif (response == "R"):
             print("NEW GAME\n")
             user_score = 0
             CPU_score = 0
+        ##Check for who won the round
         else:
             user_score, CPU_score = play(response, CPU_play(), user_score, CPU_score)
             check_winner = winner(user_score, CPU_score, to_win)
             if (check_winner):
+                ##Prompt user to start a new game or end game
                 while True:
+                    ##Ensure User enters a valid input
                     try:
                         new = input("Enter Q for Quit or R to Restart: ")
                         new = new.upper()
